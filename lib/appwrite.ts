@@ -22,7 +22,7 @@ export async function login() {
     try {
         const redirectUri = Linking.createURL('/');
 
-        const response = await account.createOAuth2Session(
+        const response = await account.createOAuth2Token(
             OAuthProvider.Google,
             redirectUri,
         );
@@ -78,7 +78,7 @@ export async function logout() {
     }
 }
 
-export async function getUser() {
+export async function getCurrentUser() {
     try {
         const response = await account.get();
 
