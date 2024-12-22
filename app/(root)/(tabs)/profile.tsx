@@ -44,17 +44,20 @@ const SettingsItem = ({
 }
 
 const Profile = () => {
-
     const { user, refetch } = useGlobalContext();
 
     const handelLogout = async () => {
-        const result = await logout();
+        try {
+            const result = await logout();
 
-        if (result) {
-            Alert.alert('Success', 'You have been logged out successfully');
-            refetch();
-        } else {
-            Alert.alert('Error', 'Something went wrong');
+            if (result) {
+                Alert.alert('Success', 'You have been logged out successfully');
+                refetch();
+            } else {
+                Alert.alert('Error', 'Something went wrong');
+            }
+        } catch (error: Error | any) {
+            Alert.alert('Error', `${error.message}`);
         }
     }
 
@@ -73,7 +76,7 @@ const Profile = () => {
                 <View className='flex flex-row justify-center mt-5'>
                     <View className='flex flex-col items-center realtive mt-5'>
                         <Image
-                            source={{uri: user?.avatar}}
+                            source={{ uri: user?.avatar }}
                             className='size-44 relative rounded-full'
                         />
                         <TouchableOpacity className='absolute bottom-11 right-2'>

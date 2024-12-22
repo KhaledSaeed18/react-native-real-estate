@@ -24,7 +24,10 @@ const signIn = () => {
 
     return (
         <SafeAreaView className='bg-white h-full'>
-            <ScrollView contentContainerClassName='h-full'>
+            <ScrollView
+                showsVerticalScrollIndicator={false}
+                contentContainerClassName='h-full pb-10'
+            >
                 <Image source={images.onboarding} className='w-full h-4/6' resizeMode="contain" />
 
                 <View className='px-10'>
