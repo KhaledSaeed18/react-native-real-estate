@@ -6,18 +6,21 @@ import { View, Text, ScrollView, TouchableOpacity } from 'react-native'
 const Filters = () => {
 
     const params = useLocalSearchParams<{ filter?: string }>();
-    const [selectedCategory, setSelectedCategory] = useState(params.filter || 'All');
+    const [selectedCategory, setSelectedCategory] = useState(
+        params.filter || "All"
+    );
 
     const handleCategoryPress = (category: string) => {
         if (selectedCategory === category) {
-            setSelectedCategory('');
-            router.setParams({ filter: 'All' });
+            setSelectedCategory("");
+            router.setParams({ filter: "" });
             return;
         }
 
         setSelectedCategory(category);
         router.setParams({ filter: category });
-    }
+    };
+
 
     return (
         <ScrollView
